@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		559A845B2BAD4A31002BCFF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559A845A2BAD4A31002BCFF8 /* AppDelegate.swift */; };
 		559A845D2BAD4A31002BCFF8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559A845C2BAD4A31002BCFF8 /* SceneDelegate.swift */; };
-		559A845F2BAD4A31002BCFF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559A845E2BAD4A31002BCFF8 /* ViewController.swift */; };
 		559A84622BAD4A31002BCFF8 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 559A84612BAD4A31002BCFF8 /* Base */; };
 		559A84642BAD4A31002BCFF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 559A84632BAD4A31002BCFF8 /* Assets.xcassets */; };
 		559A84672BAD4A31002BCFF8 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 559A84662BAD4A31002BCFF8 /* Base */; };
+		559A846F2BAD4CC9002BCFF8 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559A846E2BAD4CC9002BCFF8 /* ToDoListViewController.swift */; };
+		559A84712BAD80E6002BCFF8 /* ToDoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559A84702BAD80E6002BCFF8 /* ToDoListModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		559A84572BAD4A31002BCFF8 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		559A845A2BAD4A31002BCFF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		559A845C2BAD4A31002BCFF8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		559A845E2BAD4A31002BCFF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		559A84612BAD4A31002BCFF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		559A84632BAD4A31002BCFF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		559A84662BAD4A31002BCFF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		559A84682BAD4A31002BCFF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		559A846E2BAD4CC9002BCFF8 /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
+		559A84702BAD80E6002BCFF8 /* ToDoListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +60,9 @@
 			children = (
 				559A845A2BAD4A31002BCFF8 /* AppDelegate.swift */,
 				559A845C2BAD4A31002BCFF8 /* SceneDelegate.swift */,
-				559A845E2BAD4A31002BCFF8 /* ViewController.swift */,
 				559A84602BAD4A31002BCFF8 /* Main.storyboard */,
+				559A846E2BAD4CC9002BCFF8 /* ToDoListViewController.swift */,
+				559A84702BAD80E6002BCFF8 /* ToDoListModel.swift */,
 				559A84632BAD4A31002BCFF8 /* Assets.xcassets */,
 				559A84652BAD4A31002BCFF8 /* LaunchScreen.storyboard */,
 				559A84682BAD4A31002BCFF8 /* Info.plist */,
@@ -138,8 +141,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				559A845F2BAD4A31002BCFF8 /* ViewController.swift in Sources */,
 				559A845B2BAD4A31002BCFF8 /* AppDelegate.swift in Sources */,
+				559A84712BAD80E6002BCFF8 /* ToDoListModel.swift in Sources */,
+				559A846F2BAD4CC9002BCFF8 /* ToDoListViewController.swift in Sources */,
 				559A845D2BAD4A31002BCFF8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
