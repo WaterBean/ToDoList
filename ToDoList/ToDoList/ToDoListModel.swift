@@ -8,8 +8,8 @@
 import Foundation
 
 struct ToDoListModel {
-    var name: [String]
-    var detail: [String]
+    var name: String
+    var detail: String
     //var image: []
     
     

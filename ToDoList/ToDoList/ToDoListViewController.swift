@@ -7,14 +7,21 @@
 
 import UIKit
 
+
+var dummyData: [ToDoListModel] = [ToDoListModel(name: "책 구매", detail: "Cocoa Internals"),
+                                  ToDoListModel(name:"철수와 약속" , detail: "PC방 가서 오버워치하기"),
+                                  ToDoListModel(name: "스터디 준비하기", detail: "비동기 프로그래밍 이해하기")]
+var todolist: [ToDoListModel] = dummyData.map { $0 }
+
 class ToDoListViewController: UITableViewController {
 
-    
-    var sectionList : [String] = ["할 일"]
+    @IBOutlet var tvToDo: UITableView!
+    var sectionList: [String] = ["할 일"]
     var reuseIdentifier = "todolist"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -22,9 +29,11 @@ class ToDoListViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    // MARK: - Table view data source
-
+    override func viewWillAppear(_ animated: Bool) {
+        tvToDo.reloadData()
+    }
     
+    // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -33,18 +42,18 @@ class ToDoListViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return todolist.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         var config = cell.defaultContentConfiguration()
+        let todolistCell = todolist[indexPath.row]
         
-        config.text = "\(indexPath.row)"
-        config.secondaryText = "힘든데\(indexPath.row)"
+        config.text = todolistCell.name
+        config.secondaryText = todolistCell.detail
         config.image = .strokedCheckmark.withTintColor(.brown)
-        //config.image = .animatedImage(with: [.strokedCheckmark, .remove], duration: 1000)
         
         cell.contentConfiguration = config
         return cell
@@ -69,8 +78,10 @@ class ToDoListViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            items.remove(at: (indexPath as NSIndexPath).row)
+            todolist.remove(at: (indexPath as NSIndexPath).row)
         
+            
+            
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -78,37 +89,33 @@ class ToDoListViewController: UITableViewController {
         }    
     }
     
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.backgroundColor = .blue
-    }
     
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.backgroundColor = .white
-    }
-    
-    /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        let toMove = todolist[(fromIndexPath as NSIndexPath).row]
+        todolist.remove(at: (fromIndexPath as NSIndexPath).row)
+        todolist.insert(toMove, at: (to as NSIndexPath).row)
     }
-    */
 
-    /*
+    
     // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+//    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+//        // Return false if you do not want the item to be re-orderable.
+//        return true
+//    }
+    
 
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "sgDetail" {
+            let cell = sender as! UITableViewCell
+            let indexPath = self.tvToDo.indexPath(for: cell)
+            let detailView = segue.destination as! ToDoDetailViewController
+            detailView.receiveToDo(todolist[(indexPath! as NSIndexPath).row])
+        }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
